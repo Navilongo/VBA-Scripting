@@ -72,9 +72,16 @@ For w = 1 To ws_count
     
             'Set Year Change
             Year_Change = Close_price - Open_price
-    
-            'Set Year Change Percent
-            Year_Percent = (Year_Change) / Open_price
+            
+                'To avoid division by 0 
+            If Open_price = 0 Then
+                
+                    Year_Percent = 0
+                        
+                Else
+                    'Set Year Change Percent
+                    Year_Percent = (Year_Change) / Open_price
+            End If
     
             'Print Ticker Name
             Range("I" & Ticker_Name_Row).Value = Ticker_name
